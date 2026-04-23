@@ -1,11 +1,11 @@
 Create a room:
-Curl -XPOST http://localhost:8080/SmartCampusAPI/api/v1/rooms -H "Content-Type: application/json" -d '{"id":"LIB-301","name":"Library Room","capacity":50}'
+Curl POST http://localhost:8080/SmartCampusAPI/api/v1/rooms -H "Content-Type: application/json" -d '{"id":"LIB-301","name":"Library Room","capacity":50}'
 
 Get rooms:
 Curl http://localhost:8080/SmartCampusAPI/api/v1/rooms
 
 Add sensor:
-Curl -XPOST http://localhost:8080/SmartCampusAPI/api/v1/sensors -H "Content-Type: application/json" -d '{"id":"TEMP-001","type":"Temperature","status":"ACTIVE","currentValue":0,"roomId":"LIB-301"}'
+Curl POST http://localhost:8080/SmartCampusAPI/api/v1/sensors -H "Content-Type: application/json" -d '{"id":"TEMP-001","type":"Temperature","status":"ACTIVE","currentValue":0,"roomId":"LIB-301"}'
 
 Part 1: Architecture
 JAX-RS typically creates a new instance of a resource class for each request. This helps avoid shared state issues between requests. However, since this project uses in-memory static collections, there is still a risk of race conditions if multiple requests modify the same data at the same time. In a real system, thread-safe structures or synchronization would be required.
